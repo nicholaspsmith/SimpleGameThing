@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,14 +18,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="I-Love-Kathryn" translatesAutoresizingMaskIntoConstraints="NO" id="ata-4p-nIs">
-                                <rect key="frame" x="52" y="34" width="496" height="265"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="hPG-Nr-DoD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="bDJ-DV-RWt">
+                                <rect key="frame" x="0.0" y="538" width="600" height="62"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text-holder" translatesAutoresizingMaskIntoConstraints="NO" id="Ydm-oe-bP8">
+                                <rect key="frame" x="53" y="547" width="495" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="495" id="CB3-EW-dfc"/>
+                                    <constraint firstAttribute="height" constant="43" id="UCr-F9-iCJ"/>
+                                    <constraint firstAttribute="width" constant="495" id="sbM-eq-SwY"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CB3-EW-dfc"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34J-B8-04R">
+                                <rect key="frame" x="67" y="74" width="129" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PRr-pI-OEm"/>
+                                    <constraint firstAttribute="width" constant="130" id="X6m-0m-BA9"/>
+                                </constraints>
+                                <state key="normal" image="player1attackbtn"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMG-CK-Wel">
+                                <rect key="frame" x="402" y="74" width="129" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="1vA-eB-4ss"/>
+                                    <constraint firstAttribute="height" constant="50" id="Qd1-7w-Axf"/>
+                                </constraints>
+                                <state key="normal" image="player2attackbtn"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ata-4p-nIs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dBq-ky-4J9"/>
-                            <constraint firstItem="ata-4p-nIs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="hEn-4j-jia"/>
+                            <constraint firstAttribute="trailing" secondItem="hPG-Nr-DoD" secondAttribute="trailing" id="7TG-Qh-sZV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hPG-Nr-DoD" secondAttribute="bottom" id="EGy-FU-ltj"/>
+                            <constraint firstItem="hPG-Nr-DoD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NfK-27-T7m"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ydm-oe-bP8" secondAttribute="bottom" constant="10" id="Qyq-s5-tb2"/>
+                            <constraint firstItem="hPG-Nr-DoD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="V0b-Ie-JsL"/>
+                            <constraint firstItem="Ydm-oe-bP8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y6V-i0-WOJ"/>
+                            <constraint firstItem="bDJ-DV-RWt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aoc-i2-M0X"/>
+                            <constraint firstAttribute="trailing" secondItem="bDJ-DV-RWt" secondAttribute="trailing" id="bvo-J9-cMs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PMG-CK-Wel" secondAttribute="trailing" constant="50" id="cAz-SE-Qmc"/>
+                            <constraint firstItem="34J-B8-04R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="hOk-oH-feL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bDJ-DV-RWt" secondAttribute="bottom" id="i72-Dj-kEy"/>
+                            <constraint firstItem="34J-B8-04R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="nB8-gZ-9OB"/>
+                            <constraint firstItem="PMG-CK-Wel" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="z2j-B4-s5w"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -34,6 +78,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="I-Love-Kathryn" width="618" height="79"/>
+        <image name="bg" width="1024" height="677"/>
+        <image name="ground" width="1024" height="106"/>
+        <image name="player1attackbtn" width="212" height="78"/>
+        <image name="player2attackbtn" width="212" height="78"/>
+        <image name="text-holder" width="696" height="106"/>
     </resources>
 </document>
