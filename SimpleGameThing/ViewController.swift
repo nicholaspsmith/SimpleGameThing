@@ -35,7 +35,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func ogreWins() {
+        mainLabel.text = "Ogre wins!!!"
+    }
 
+    func knightWins() {
+        mainLabel.text = "Knight is victorious!"
+    }
 
     @IBAction func pressOgreAttack(sender: AnyObject) {
         if knight.attemptAttack(ogre.attackPower) {
@@ -51,6 +58,7 @@ class ViewController: UIViewController {
             knightImage.hidden = true
             knightAttackButton.enabled = false
             ogreAttackButton.enabled = false
+            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "ogreWins", userInfo: nil, repeats: false)
         }
     }
     
@@ -68,6 +76,7 @@ class ViewController: UIViewController {
             ogreImage.hidden = true
             knightAttackButton.enabled = false
             ogreAttackButton.enabled = false
+            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "knightWins", userInfo: nil, repeats: false)
         }
     }
 }
