@@ -13,6 +13,7 @@ class Character {
   private var _hp: Int = 100
   private var _attackPower: Int = 10
   private var _name: String!
+  private var _disabled: Bool = false
   
   var hp: Int {
     get {
@@ -25,6 +26,12 @@ class Character {
       return _attackPower
     }
   }
+    
+    var disabled: Bool {
+        get {
+            return _disabled
+        }
+    }
   
   var isAlive: Bool {
     get {
@@ -41,9 +48,17 @@ class Character {
     self._hp = startingHp
     self._attackPower = startingAttackPower
   }
+    
+    func enable() {
+        _disabled = false
+    }
   
   func attemptAttack(power: Int) -> Bool {
     self._hp -= attackPower
+    _disabled = true
+    
+    // this is not working
+    NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "enable", userInfo: nil, repeats: false)
     // Return true if attack successful
     return true
   }

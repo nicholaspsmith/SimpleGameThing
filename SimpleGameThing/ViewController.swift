@@ -55,38 +55,46 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pressOgreAttack(sender: AnyObject) {
-        if knight.attemptAttack(ogre.attackPower) {
-            mainLabel.text = "Attacked knight for \(ogre.attackPower) HP"
-            knightHPLabel.text = "\(knight.hp) HP"
-        } else {
-            mainLabel.text = "Attack was unsuccessful"
-        }
-        
-        if !knight.isAlive {
-            knightHPLabel.text = ""
-            mainLabel.text = "Killed knight"
-            knightImage.hidden = true
-            knightAttackButton.enabled = false
-            ogreAttackButton.enabled = false
-            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "ogreWins", userInfo: nil, repeats: false)
+        if (!ogre.disabled) {
+            
+            
+            if knight.attemptAttack(ogre.attackPower) {
+                mainLabel.text = "Attacked knight for \(ogre.attackPower) HP"
+                knightHPLabel.text = "\(knight.hp) HP"
+            } else {
+                mainLabel.text = "Attack was unsuccessful"
+            }
+            
+            if !knight.isAlive {
+                knightHPLabel.text = ""
+                mainLabel.text = "Killed knight"
+                knightImage.hidden = true
+                knightAttackButton.enabled = false
+                ogreAttackButton.enabled = false
+                NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "ogreWins", userInfo: nil, repeats: false)
+            }
         }
     }
     
     @IBAction func pressKnightAttack(sender: AnyObject) {
-        if ogre.attemptAttack(knight.attackPower) {
-            mainLabel.text = "Attacked ogre for \(knight.attackPower) HP"
-            ogreHPLabel.text = "\(ogre.hp) HP"
-        } else {
-            mainLabel.text = "Attack was unsuccessful"
-        }
-        
-        if !ogre.isAlive {
-            ogreHPLabel.text = ""
-            mainLabel.text = "Killed ogre"
-            ogreImage.hidden = true
-            knightAttackButton.enabled = false
-            ogreAttackButton.enabled = false
-            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "knightWins", userInfo: nil, repeats: false)
+        if (!knight.disabled) {
+            
+            
+            if ogre.attemptAttack(knight.attackPower) {
+                mainLabel.text = "Attacked ogre for \(knight.attackPower) HP"
+                ogreHPLabel.text = "\(ogre.hp) HP"
+            } else {
+                mainLabel.text = "Attack was unsuccessful"
+            }
+            
+            if !ogre.isAlive {
+                ogreHPLabel.text = ""
+                mainLabel.text = "Killed ogre"
+                ogreImage.hidden = true
+                knightAttackButton.enabled = false
+                ogreAttackButton.enabled = false
+                NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "knightWins", userInfo: nil, repeats: false)
+            }
         }
     }
     
