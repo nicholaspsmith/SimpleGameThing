@@ -204,9 +204,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="knightAttackButton" destination="PMG-CK-Wel" id="ft5-Wd-0CO"/>
                         <outlet property="knightHPLabel" destination="git-TN-FYS" id="Hzb-4S-WEc"/>
                         <outlet property="knightImage" destination="OZZ-3a-RSY" id="yW3-YY-4go"/>
                         <outlet property="mainLabel" destination="KLz-e9-CUz" id="Rxz-ew-Lso"/>
+                        <outlet property="ogreAttackButton" destination="34J-B8-04R" id="Wyc-WW-wtd"/>
                         <outlet property="ogreHPLabel" destination="W0b-lR-EQ6" id="cBy-Vt-rRQ"/>
                         <outlet property="ogreImage" destination="nK5-ho-PWv" id="Tnz-aa-d5y"/>
                     </connections>

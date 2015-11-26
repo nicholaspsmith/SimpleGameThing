@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var knightImage: UIImageView!
     @IBOutlet weak var ogreImage: UIImageView!
+    @IBOutlet weak var knightAttackButton: UIButton!
+    @IBOutlet weak var ogreAttackButton: UIButton!
     
     var knight: Character!
     var ogre: Character!
@@ -47,6 +49,8 @@ class ViewController: UIViewController {
             knightHPLabel.text = ""
             mainLabel.text = "Killed knight"
             knightImage.hidden = true
+            knightAttackButton.enabled = false
+            ogreAttackButton.enabled = false
         }
     }
     
@@ -62,6 +66,8 @@ class ViewController: UIViewController {
             ogreHPLabel.text = ""
             mainLabel.text = "Killed ogre"
             ogreImage.hidden = true
+            knightAttackButton.enabled = false
+            ogreAttackButton.enabled = false
         }
     }
 }
