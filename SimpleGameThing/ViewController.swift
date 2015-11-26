@@ -17,31 +17,41 @@ class ViewController: UIViewController {
     @IBOutlet weak var ogreImage: UIImageView!
     @IBOutlet weak var knightAttackButton: UIButton!
     @IBOutlet weak var ogreAttackButton: UIButton!
+    @IBOutlet weak var restartButton: UIButton!
     
     var knight: Character!
     var ogre: Character!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        knight = Character(name: "Avatar", startingHp: 120, startingAttackPower: 20)
-        ogreHPLabel.text = "\(knight.hp) HP"
-
-        ogre = Character(name: "Avatar", startingHp: 120, startingAttackPower: 20)
-        knightHPLabel.text = "\(ogre.hp) HP"
-
+        
+        initializeCharacters()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    func initializeCharacters() {
+        knight = Character(name: "Avatar", startingHp: 120, startingAttackPower: 20)
+        ogreHPLabel.text = "\(knight.hp) HP"
+        
+        ogre = Character(name: "Avatar", startingHp: 120, startingAttackPower: 20)
+        knightHPLabel.text = "\(ogre.hp) HP"
+    }
+    
+    func showRestart() {
+        restartButton.hidden = false
+    }
+    
     func ogreWins() {
         mainLabel.text = "Ogre wins!!!"
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "showRestart", userInfo: nil, repeats: false)
     }
 
     func knightWins() {
         mainLabel.text = "Knight is victorious!"
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "showRestart", userInfo: nil, repeats: false)
     }
 
     @IBAction func pressOgreAttack(sender: AnyObject) {
@@ -78,6 +88,16 @@ class ViewController: UIViewController {
             ogreAttackButton.enabled = false
             NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "knightWins", userInfo: nil, repeats: false)
         }
+    }
+    
+    
+    @IBAction func restartPressed(sender: AnyObject) {
+        initializeCharacters()
+        knightImage.hidden = false
+        ogreImage.hidden = false
+        restartButton.hidden = true
+        knightAttackButton.enabled = true
+        ogreAttackButton.enabled = true
     }
 }
 
