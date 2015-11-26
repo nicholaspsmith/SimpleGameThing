@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     var knight: Character!
     var ogre: Character!
+    var gameOver: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,8 @@ class ViewController: UIViewController {
             if knight.attemptAttack(ogre.attackPower) {
                 mainLabel.text = "Attacked knight for \(ogre.attackPower) HP"
                 knightHPLabel.text = "\(knight.hp) HP"
+                disableKnight()
+                NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "enableKnight", userInfo: nil, repeats: false)
             } else {
                 mainLabel.text = "Attack was unsuccessful"
             }
@@ -71,6 +74,7 @@ class ViewController: UIViewController {
                 knightImage.hidden = true
                 knightAttackButton.enabled = false
                 ogreAttackButton.enabled = false
+                gameOver = true
                 NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "ogreWins", userInfo: nil, repeats: false)
             }
         }
@@ -78,11 +82,11 @@ class ViewController: UIViewController {
     
     @IBAction func pressKnightAttack(sender: AnyObject) {
         if (!knight.disabled) {
-            
-            
             if ogre.attemptAttack(knight.attackPower) {
                 mainLabel.text = "Attacked ogre for \(knight.attackPower) HP"
                 ogreHPLabel.text = "\(ogre.hp) HP"
+                disableOgre()
+                NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "enableOgre", userInfo: nil, repeats: false)
             } else {
                 mainLabel.text = "Attack was unsuccessful"
             }
@@ -93,8 +97,33 @@ class ViewController: UIViewController {
                 ogreImage.hidden = true
                 knightAttackButton.enabled = false
                 ogreAttackButton.enabled = false
+                gameOver = true
                 NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "knightWins", userInfo: nil, repeats: false)
             }
+        }
+    }
+    
+    func disableOgre() {
+        ogre.disable()
+        ogreAttackButton.enabled = false
+    }
+    
+    func enableOgre(){
+        ogre.enable()
+        if (!gameOver) {
+            ogreAttackButton.enabled = true
+        }
+    }
+    
+    func disableKnight() {
+        knight.disable()
+        knightAttackButton.enabled = false
+    }
+    
+    func enableKnight() {
+        knight.enable()
+        if (!gameOver) {
+            knightAttackButton.enabled = true
         }
     }
     
@@ -106,6 +135,7 @@ class ViewController: UIViewController {
         restartButton.hidden = true
         knightAttackButton.enabled = true
         ogreAttackButton.enabled = true
+        gameOver = false
     }
 }
 

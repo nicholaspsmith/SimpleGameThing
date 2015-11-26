@@ -52,13 +52,15 @@ class Character {
     func enable() {
         _disabled = false
     }
+    
+    func disable() {
+        _disabled = true
+    }
   
   func attemptAttack(power: Int) -> Bool {
     self._hp -= attackPower
     _disabled = true
     
-    // this is not working
-    NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "enable", userInfo: nil, repeats: false)
     // Return true if attack successful
     return true
   }
